@@ -16,7 +16,6 @@ morgan.token('data', (req) => {
 
 app.use(morgan(':method :url :status :res[content-length]- :response-time ms :data'))
 
-app.use(express.static(path.join(__dirname, '../../frontend')))
 
 
 app.get('/api/persons', (request, response, next) => {
@@ -83,6 +82,9 @@ app.put('/api/persons/:id', (request, response, next) => {
     })
     .catch(error => next(error))
 })
+
+app.use(express.static(path.join(__dirname, '../../frontend')))
+
 
 app.get('*', (request, response) => {
   response.sendFile(path.join(__dirname, '../../frontend', 'index.html'))
