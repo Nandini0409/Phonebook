@@ -1,16 +1,18 @@
+GET https://phonebook-self.vercel.app/api/persons
+
+###
 GET http://localhost:3002/api/persons
 
 
-
 ###
-GET http://localhost:3002/api/persons/6704c5a0e365a3eabeb093ec
+GET http://localhost:3002/api/persons/6708afdf6a672d6024195ed2
 
 
-
-
-###
-GET http://localhost:3002/info
 
 
 ###
-GET http://localhost:3002
+GET https://phonebook-self.vercel.app/info
+
+
+###
+GET https://phonebook-self.vercel.app/

@@ -7,7 +7,7 @@ const Person = require('../models/person.js')
 const app = express()
 
 app.use(cors())
-app.use(express.static(path.join(__dirname, '../../frontend')))
+app.use(express.json())
 
 morgan.token('data', (req) => {
   const filteredObj = req.body
@@ -16,7 +16,11 @@ morgan.token('data', (req) => {
 
 app.use(morgan(':method :url :status :res[content-length]- :response-time ms :data'))
 
+app.use(express.static(path.join(__dirname, '../../frontend')))
+
+
 app.get('/api/persons', (request, response, next) => {
+  
   Person.find({})
     .then(person => {
       person ? response.json(person) : []
@@ -83,6 +87,8 @@ app.put('/api/persons/:id', (request, response, next) => {
 app.get('*', (request, response) => {
   response.sendFile(path.join(__dirname, '../../frontend', 'index.html'))
 })
+
+
 
 
 const port = process.env.PORT || 3002
